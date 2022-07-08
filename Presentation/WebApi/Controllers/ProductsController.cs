@@ -18,34 +18,29 @@ namespace WebApi.Controllers
         }
 
         [HttpGet(Name = "Get")]
-        [ValidateAntiForgeryToken]
         public async Task<IEnumerable<Product>> GetAsync()
         {
             return await _context.GetAllAsync();
         }
-        [HttpGet(Name = "Find")]
-        [ValidateAntiForgeryToken]
+        [HttpGet("{id}")]
         public async Task<Product> Find(int id)
         {
             return await _context.GetByIdAsync(id);
         }
 
         [HttpPost(Name = "Add")]
-        [ValidateAntiForgeryToken]
         public void Add(Product product)
         {
             _context.CreateAsync(product);
         }
 
         [HttpPost(Name = "Update")]
-        [ValidateAntiForgeryToken]
         public void Update(Product product)
         {
             _context.Update(product);
         }
 
         [HttpDelete(Name = "Delete")]
-        [ValidateAntiForgeryToken]
         public void Delete(int id)
         {
             _context.Delete(id);
